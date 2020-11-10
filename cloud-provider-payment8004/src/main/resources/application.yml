@@ -1,9 +1,10 @@
 server:
-  port: 8088
+  port: 8004
 
 spring:
   application:
-    name: cloud-order-service
+    name: cloud-provider-payment
+
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.gjt.mm.mysql.Driver
@@ -11,10 +12,6 @@ spring:
     username: root
     password: LZLlzl12345
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-#      defaultZone: http://localhost:7001/eureka
-      defaultZone: http://eureka7002.com:7002/eureka, http://eureka7001.com:7001/eureka
+  cloud:
+    zookeeper:
+      connect-string: 127.0.0.1:2181
