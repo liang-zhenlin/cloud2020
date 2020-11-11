@@ -1,0 +1,22 @@
+server:
+  port: 8006
+
+eureka:
+  #    hostname: 127.0.0.1
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      #      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+      #      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+      defaultZone: http://eureka7001.com:7001/eureka
+
+spring:
+  application:
+    name: cloud-consumer-feign-hystrix-order8006
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloud2020?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: LZLlzl12345
