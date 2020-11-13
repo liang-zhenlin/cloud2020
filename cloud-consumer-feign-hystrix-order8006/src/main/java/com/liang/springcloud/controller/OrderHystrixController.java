@@ -28,4 +28,6 @@ public class OrderHystrixController {
         String result = paymentHystrixService.paymentInfo_TimeOut(id);
         return result;
     }
+
+
 }
