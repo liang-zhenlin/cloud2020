@@ -1,0 +1,43 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: payment_routh
+#          uri: http://localhost:8001
+          uri: lb://CLOUD-PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/get/**
+            - After=2020-11-13T13:56:13.186+08:00[Asia/Shanghai]
+            - Cookie=username,zzyy
+
+        - id: payment_routh2
+#          uri: http://localhost:8001
+          uri: lb://CLOUD-PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/lb/**
+
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: org.gjt.mm.mysql.Driver
+#    url: jdbc:mysql://localhost:3306/cloud2020?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    username: root
+#    password: LZLlzl12345
+
+eureka:
+  instance:
+    name: cloud-gateway-service
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+            defaultZone: http://localhost:7001/eureka
+#      defaultZone: http://eureka7002.com:7002/eureka, http://eureka7001.com:7001/eureka
+
